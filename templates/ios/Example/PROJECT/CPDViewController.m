@@ -24,14 +24,9 @@ typedef void (^ProjDemoTableCellBlock)(void);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
-	// Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /**
@@ -56,7 +51,6 @@ typedef void (^ProjDemoTableCellBlock)(void);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-        
     }
     return _tableView;
 }
@@ -71,6 +65,7 @@ typedef void (^ProjDemoTableCellBlock)(void);
     cell.textLabel.text = self.tableViewDatas[indexPath.row][PROJ_DEMO_TABLE_CELL_TITLE_KEY];
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ProjDemoTableCellBlock block = self.tableViewDatas[indexPath.row][PROJ_DEMO_TABLE_CELL_BLOCK_KEY];
